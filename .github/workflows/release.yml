@@ -17,6 +17,9 @@ on:
           - patch
           - major
 
+permissions: 
+  contents: write
+
 env:
   RELEASE_SCRIPT: ./.github/scripts/release.py
 
@@ -40,7 +43,8 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          token: ${{ secrets.RUFFLE_BUILD_TOKEN }}
+          token: ${{ github.token }}
+          fetch-depth: 0
 
       - name: Configure release
         id: configure
@@ -111,7 +115,7 @@ jobs:
         if: steps.configure.outputs.enabled == 'true'
         id: create_release
         env:
-          GITHUB_TOKEN: ${{ secrets.RUFFLE_BUILD_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           $RELEASE_SCRIPT release ${{ github.repository }}
 
@@ -644,7 +648,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           repository: ruffle-rs/js-docs
-          github_token: ${{ secrets.RUFFLE_BUILD_TOKEN }}
+          github_token: ${{ github.token }}
           directory: js-docs
           force: true
 
@@ -682,7 +686,7 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           repository: ruffle-rs/demo
-          github_token: ${{ secrets.RUFFLE_BUILD_TOKEN }}
+          github_token: ${{ github.token }}
           directory: demo
           force: true
 
