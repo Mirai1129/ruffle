@@ -58,6 +58,10 @@ export const DEFAULT_CONFIG: Required<BaseLoadOptions> = {
     gamepadButtonMapping: {},
     urlRewriteRules: [],
     scrollingBehavior: ScrollingBehavior.Smart,
-    deviceFontRenderer: DeviceFontRenderer.Embedded,
+    // The browser's canvas renderer can use the browser/OS font fallback chain,
+    // which is needed for device-font text in scripts such as Chinese, Japanese,
+    // and Korean. The embedded renderer's bundled fallback font is intentionally
+    // small and does not contain CJK glyphs.
+    deviceFontRenderer: DeviceFontRenderer.Canvas,
     backgroundExecutionMode: BackgroundExecutionMode.MainThread,
 };
