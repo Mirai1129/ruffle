@@ -361,6 +361,11 @@ impl ActivePlayer {
             player_lock.set_default_font(
                 DefaultFont::Serif,
                 vec![
+                    "Songti SC".into(),          // macOS Simplified Chinese
+                    "Songti TC".into(),          // macOS Traditional Chinese
+                    "STSong".into(),            // older macOS Chinese
+                    "Noto Serif CJK SC".into(), // Linux
+                    "Noto Serif CJK TC".into(), // Linux
                     "Times New Roman".into(),
                     "Tinos".into(),
                     "Liberation Serif".into(),
@@ -370,6 +375,11 @@ impl ActivePlayer {
             player_lock.set_default_font(
                 DefaultFont::Sans,
                 vec![
+                    "PingFang SC".into(),          // macOS Simplified Chinese
+                    "PingFang TC".into(),          // macOS Traditional Chinese
+                    "Hiragino Sans GB".into(),     // older macOS Chinese
+                    "Noto Sans CJK SC".into(),     // Linux
+                    "Noto Sans CJK TC".into(),     // Linux
                     "Arial".into(),
                     "Arimo".into(),
                     "Liberation Sans".into(),
@@ -379,6 +389,10 @@ impl ActivePlayer {
             player_lock.set_default_font(
                 DefaultFont::Typewriter,
                 vec![
+                    "PingFang SC".into(),      // macOS Simplified Chinese
+                    "PingFang TC".into(),      // macOS Traditional Chinese
+                    "Noto Sans Mono CJK SC".into(), // Linux
+                    "Noto Sans Mono CJK TC".into(), // Linux
                     "Courier New".into(),
                     "Cousine".into(),
                     "Liberation Mono".into(),
