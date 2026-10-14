@@ -370,6 +370,10 @@ impl ActivePlayer {
                     "Tinos".into(),
                     "Liberation Serif".into(),
                     "DejaVu Serif".into(),
+                    "Arial Unicode MS".into(),
+                    "Noto Sans Symbols 2".into(),
+                    "Apple Symbols".into(),
+                    "Segoe UI Symbol".into(),
                 ],
             );
             player_lock.set_default_font(
@@ -384,6 +388,10 @@ impl ActivePlayer {
                     "Arimo".into(),
                     "Liberation Sans".into(),
                     "DejaVu Sans".into(),
+                    "Arial Unicode MS".into(),
+                    "Noto Sans Symbols 2".into(),
+                    "Apple Symbols".into(),
+                    "Segoe UI Symbol".into(),
                 ],
             );
             player_lock.set_default_font(
@@ -397,6 +405,10 @@ impl ActivePlayer {
                     "Cousine".into(),
                     "Liberation Mono".into(),
                     "DejaVu Sans Mono".into(),
+                    "Arial Unicode MS".into(),
+                    "Noto Sans Symbols 2".into(),
+                    "Apple Symbols".into(),
+                    "Segoe UI Symbol".into(),
                 ],
             );
             player_lock.set_default_font(

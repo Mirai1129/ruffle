@@ -473,13 +473,14 @@ impl<'gc> Library<'gc> {
         }
 
         let mut result = vec![];
-        // First try to find any exactly matching fonts.
+        // First try to find all exactly matching fonts. Keep every font that
+        // can be loaded: a default font may only cover part of Unicode, so
+        // the remaining fonts are needed as per-glyph fallbacks.
         for name in self.default_font_names.entry(name).or_default().clone() {
             let query = FontQuery::new(FontType::Device, name, is_bold, is_italic);
             if let Some(font) = self.get_or_load_exact_device_font(&query, ui, renderer, gc_context)
             {
                 result.push(font);
-                break; // TODO: Return multiple fonts when it's needed.
             }
         }
 
@@ -489,7 +490,9 @@ impl<'gc> Library<'gc> {
                 let query = FontQuery::new(FontType::Device, name, is_bold, is_italic);
                 if let Some(font) = self.device_fonts.find(&query) {
                     result.push(font);
-                    break; // TODO: Return multiple fonts when it's needed.
+                    // A compatible match is only a last-resort replacement;
+                    // one is enough when none of the requested fonts exists.
+                    break;
                 }
             }
         }
