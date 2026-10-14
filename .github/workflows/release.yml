@@ -361,8 +361,13 @@ jobs:
       - name: Notarize bundle
         id: notarize-bundle
         continue-on-error: true
+        if: ${{ env.APPLE_ID != '' && env.APPLE_TEAM != '' && env.APPLE_APP_PASSWORD != '' }}
+        env:
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_TEAM: ${{ secrets.APPLE_TEAM }}
+          APPLE_APP_PASSWORD: ${{ secrets.APPLE_APP_PASSWORD }}
         run: |
-          xcrun notarytool store-credentials "Ruffle" --apple-id ${{ secrets.APPLE_ID }} --team-id ${{ secrets.APPLE_TEAM }} --password ${{ secrets.APPLE_APP_PASSWORD }}
+          xcrun notarytool store-credentials "Ruffle" --apple-id "$APPLE_ID" --team-id "$APPLE_TEAM" --password "$APPLE_APP_PASSWORD"
           cd package
           zip -r Ruffle.zip Ruffle.app
           mv Ruffle.zip ..
